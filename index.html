@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HONGKONG DIGIGOOD CULTURE LIMITED | 汽車零部件貿易</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#111827',      // 深藍灰
+                            deep: '#0b0f19',
+                            primary: '#1d4ed8',
+                            blue: '#2563eb',
+                            accent: '#ef4444',     // 賽車紅
+                            red: '#f87171',
+                            light: '#f5f7fb'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Rajdhani"', 'sans-serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.72)), url('https://picsum.photos/id/187/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.3);
+        }
+
+        .speed-bg {
+            background-image: linear-gradient(rgba(11, 15, 25, 0.96), rgba(11, 15, 25, 0.93)),
+                linear-gradient(120deg, rgba(239, 68, 68, 0.12) 0 2px, transparent 2px),
+                linear-gradient(60deg, rgba(37, 99, 235, 0.1) 0 2px, transparent 2px);
+            background-size: 100% 100%, 80px 80px, 80px 80px;
+        }
+
+        .speed-lines {
+            background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 14px);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-slate-700 antialiased overflow-x-hidden">
+
+    <!-- 頂部公告 -->
+    <div class="bg-brand-deep text-red-300 text-xs py-2 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <span><i class="fas fa-bolt mr-2"></i>歐洲原廠零件倉現已補貨，熱門型號 48 小時發貨。</span>
+            <span class="hidden md:block">零件查詢熱線：69797884</span>
+        </div>
+    </div>
+
+    <!-- 導航 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-gradient-to-br from-brand-primary to-brand-accent rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-blue-500/40">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <div class="text-white">
+                    <h1 class="font-bold text-lg leading-tight font-display tracking-wide">HONGKONG DIGIGOOD CULTURE</h1>
+                    <p class="text-[10px] tracking-[0.3em] text-red-300 uppercase">Auto Parts Trading</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-white text-sm font-medium">
+                <a href="#home" class="hover:text-red-300 transition">首頁</a>
+                <a href="#about" class="hover:text-red-300 transition">關於我們</a>
+                <a href="#parts" class="hover:text-red-300 transition">零件中心</a>
+                <a href="#service" class="hover:text-red-300 transition">技術服務</a>
+                <a href="#contact" class="hover:text-red-300 transition">聯絡我們</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-block px-6 py-2.5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-full hover:opacity-90 transition duration-300 text-sm shadow-lg shadow-blue-500/30">
+                查詢零件
+            </a>
+
+            <button class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 speed-lines"></div>
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center mt-16 relative z-10">
+            <div class="text-white">
+                <span class="inline-block py-1 px-4 bg-red-400/15 border border-red-400/50 rounded-full text-red-300 text-sm mb-6 tracking-widest reveal">PRECISION PARTS · RACING SPEED</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight font-display reveal" style="transition-delay: 100ms;">
+                    驅動每一程，<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">精準每一件</span>
+                </h2>
+                <p class="text-lg text-gray-200 mb-10 leading-relaxed reveal" style="transition-delay: 200ms;">
+                    HONGKONG DIGIGOOD CULTURE LIMITED 是香港專業汽車零部件貿易公司，專注歐洲及日本車系的原廠與高性能改裝零件供應，服務車房、進口商及車主逾二十年。
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 reveal" style="transition-delay: 300ms;">
+                    <a href="#parts" class="px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-lg hover:opacity-90 transition shadow-lg shadow-blue-500/30">
+                        瀏覽零件中心 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg font-bold hover:bg-white/20 transition">
+                        零件快速報價
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block reveal" style="transition-delay: 200ms;">
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-2xl">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="font-bold text-white"><i class="fas fa-gauge-high text-red-400 mr-2"></i>零件庫存速查</h4>
+                        <span class="text-xs text-red-300 px-3 py-1 bg-red-400/10 rounded-full">LIVE</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-filter text-xl text-blue-400"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">德國剎車制動套裝</p>
+                                <p class="text-xs text-gray-200">碟盤 + 來令片 · OEM 標準</p>
+                            </div>
+                            <span class="text-xs text-blue-300 font-bold">現貨</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-bolt text-xl text-red-400"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">高性能渦輪增壓器</p>
+                                <p class="text-xs text-gray-200">日本大廠出品 · 保固一年</p>
+                            </div>
+                            <span class="text-xs text-red-300 font-bold">在途</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-wrench text-xl text-blue-400"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">原廠底盤懸掛件</p>
+                                <p class="text-xs text-gray-200">避震機、擺臂、拉桿全線</p>
+                            </div>
+                            <span class="text-xs text-blue-300 font-bold">現貨</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-200 mt-5"><i class="fas fa-magnifying-glass text-red-400 mr-1"></i>支援車架號（VIN）精確查件</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 數據統計 -->
+    <section class="py-10 bg-white relative -mt-10 z-20 shadow-xl rounded-t-3xl mx-4 md:mx-10">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="reveal">
+                <div class="font-display text-4xl font-bold text-brand-primary mb-2 counter" data-target="80000">0</div>
+                <div class="text-gray-500 text-sm">+ 零件型號庫存</div>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms;">
+                <div class="font-display text-4xl font-bold text-brand-accent mb-2 counter" data-target="25">0</div>
+                <div class="text-gray-500 text-sm">個品牌車系覆蓋</div>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <div class="font-display text-4xl font-bold text-brand-primary mb-2 counter" data-target="1500">0</div>
+                <div class="text-gray-500 text-sm">+ 合作車房客戶</div>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <div class="font-display text-4xl font-bold text-brand-accent mb-2 counter" data-target="98">0</div>
+                <div class="text-gray-500 text-sm">% 即日查件回覆率</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative reveal">
+                    <img src="https://picsum.photos/id/178/800/600" alt="汽車零件倉庫" class="rounded-2xl shadow-2xl z-10 relative">
+                    <div class="absolute -bottom-8 -right-8 bg-gradient-to-br from-brand-primary to-brand-accent text-white px-8 py-6 rounded-2xl shadow-xl">
+                        <p class="font-display font-bold text-3xl">20</p>
+                        <p class="text-sm text-red-100">年零件貿易經驗</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal">
+                    <h3 class="text-brand-accent font-bold tracking-[0.3em] uppercase mb-3">關於HONGKONG DIGIGOOD CULTURE LIMITED</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6 leading-snug">專業零件供應，<br>讓愛車永不停步</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        HONGKONG DIGIGOOD CULTURE LIMITED 成立於 2006 年，總部位於 Rm 1702 17/F HONG KONG TRADE CTR 161-167 DES VOEUX RD 香港元朗汽車零件城，服務港澳及大灣區市場。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        我們與德國、日本、韓國及台灣的大型零件製造商及總代理商直接合作，提供原廠件（OE）、副廠品牌件及高性能改裝件三大供應體系，並配備專業技術團隊協助查件與選型。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> IATF 16949 供應商</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> 原廠授權分銷</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> VIN 精確查件</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> 產品責任保險</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 零件中心 -->
+    <section id="parts" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">PARTS CENTER</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">六大零件體系</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">覆蓋引擎、底盤、電器及車身全系統零件。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-engine"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">引擎系統</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        正時鏈條、活塞、噴油嘴及渦輪套件，涵蓋主流歐日車型。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">制動系統</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        制動碟、來令片、卡鉗及 ABS 傳感器，OE 品質層層把關。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-gauge-simple-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">底盤懸掛</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        避震機、擺臂、球頭及防傾桿，兼顧舒適與操控性能。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">電器電子</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        發電機、起動馬達、傳感器及 ECU，支援編程服務。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">車身外飾</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        泵把、車燈、後視鏡及鈑金件，原廠色號對應發貨。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-dark rounded-2xl transition-all duration-300 reveal text-white" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-red-400/20 text-red-300 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-gauge-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">性能改裝</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed mb-4">
+                        排氣、進氣、絞牙避震及 ECU 調校，賽道級品牌官方代理。
+                    </p>
+                    <a href="#contact" class="text-red-300 text-sm font-semibold hover:underline">查詢改裝方案 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技術服務 -->
+    <section id="service" class="py-20 speed-bg text-white relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-red-300 font-bold tracking-[0.3em]">TECHNICAL SERVICE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">四大技術服務</h2>
+                <p class="text-gray-300 max-w-xl mx-auto">不只賣零件，更提供專業的技術後盾。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal">
+                    <div class="w-16 h-16 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">免費查件</h4>
+                    <p class="text-gray-200 text-sm">提供車架號即時查詢，精確匹配原廠編號</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">極速配送</h4>
+                    <p class="text-gray-200 text-sm">全港即日送達，大灣區 24 小時到貨</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">品質保證</h4>
+                    <p class="text-gray-200 text-sm">原廠件及品牌件均提供 12 個月保固</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-blue-400/15 text-blue-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-user-gear"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">技術支援</h4>
+                    <p class="text-gray-200 text-sm">資深技師團隊提供安裝建議與故障診斷</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 流程 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold text-brand-dark">查件訂貨流程</h2>
+                <p class="text-gray-500 mt-2">最快 30 分鐘確認零件，當日即可發貨</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-blue-200"></div>
+
+                <div class="text-center reveal">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-keyboard text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">1. 提交車架號</h4>
+                    <p class="text-gray-500 text-sm px-4">線上或電話提供 VIN。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-file-lines text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">2. 確認報價</h4>
+                    <p class="text-gray-500 text-sm px-4">原廠編號與報價確認。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-truck text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">3. 出貨配送</h4>
+                    <p class="text-gray-500 text-sm px-4">現貨即日，訂貨 3-7 天。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-24 h-24 bg-brand-deep mx-auto rounded-full flex items-center justify-center border-4 border-brand-accent shadow-lg mb-6">
+                        <i class="fas fa-thumbs-up text-3xl text-brand-accent"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">4. 安裝回訪</h4>
+                    <p class="text-gray-500 text-sm px-4">技術支持與使用回訪。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 車房會員心聲 -->
+    <section class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">車房會員心聲</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">聽聽合作車房對我們零件供應服務的評價。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-full flex items-center justify-center text-xl font-bold">陳</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">陳偉強師傅</h4>
+                            <p class="text-sm text-gray-500">偉強汽車維修 · 觀塘</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「合作八年，零件查件準確率極高，VIN 查詢半小時內就有回覆。品質穩定，客訴率大幅下降。」</p>
+                    <div class="text-amber-400 text-sm">★★★★★</div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 bg-red-100 text-red-500 rounded-full flex items-center justify-center text-xl font-bold">李</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">李志輝先生</h4>
+                            <p class="text-sm text-gray-500">速達車房連鎖 · 荃灣</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「即日配送真的救急很多次，客戶等車修好不能拖。月結帳期也減輕了我們的資金壓力。」</p>
+                    <div class="text-amber-400 text-sm">★★★★★</div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-full flex items-center justify-center text-xl font-bold">K.</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">K. Tanaka</h4>
+                            <p class="text-sm text-gray-500">JDM Auto Service · 深圳</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「日系改裝件種類齊全，渦輪和避震都是正品行貨。技術團隊的安裝建議非常專業到位。」</p>
+                    <div class="text-amber-400 text-sm">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 車房增值服務 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">VALUE ADDED</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">車房專屬增值服務</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">為合作車房提供全方位營運支援。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="p-6 bg-brand-light rounded-2xl border border-gray-100 text-center reveal">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">技術培訓</h4>
+                    <p class="text-gray-500 text-sm">定期舉辦零件安裝及故障診斷培訓課程。</p>
+                </div>
+                <div class="p-6 bg-brand-light rounded-2xl border border-gray-100 text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">寄倉服務</h4>
+                    <p class="text-gray-500 text-sm">常用零件可寄存我們倉庫，按需配送。</p>
+                </div>
+                <div class="p-6 bg-brand-light rounded-2xl border border-gray-100 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">靈活帳期</h4>
+                    <p class="text-gray-500 text-sm">會員車房享月結 30-60 天彈性帳期。</p>
+                </div>
+                <div class="p-6 bg-brand-light rounded-2xl border border-gray-100 text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-blue-100 text-brand-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">優先技術支援</h4>
+                    <p class="text-gray-500 text-sm">專屬技術熱線，疑難雜症即時遠程診斷。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-r from-brand-deep to-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 40%, #ef4444 2px, transparent 2px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">為您的車房，配備頂級零件供應</h2>
+            <p class="text-xl text-gray-100 mb-10">成為會員車房，專享折扣、月結帳期與優先發貨。</p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-full shadow-xl hover:opacity-90 transform hover:scale-105 transition duration-300">
+                申請車房會員
+            </a>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer id="contact" class="bg-brand-deep text-gray-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <h3 class="font-bold text-white text-2xl mb-6 font-display">HONGKONG DIGIGOOD CULTURE LIMITED</h3>
+                    <p class="mb-6 text-sm leading-relaxed">
+                        HONGKONG DIGIGOOD CULTURE LIMITED，以精準零件與專業服務，驅動香港汽車後市場。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">快速連結</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-red-300 transition">首頁</a></li>
+                        <li><a href="#about" class="hover:text-red-300 transition">關於我們</a></li>
+                        <li><a href="#parts" class="hover:text-red-300 transition">零件中心</a></li>
+                        <li><a href="#service" class="hover:text-red-300 transition">技術服務</a></li>
+                        <li><a href="#" class="hover:text-red-300 transition">車房會員</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">聯絡方式</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-red-300"></i>
+                            <span>Rm 1702 17/F HONG KONG TRADE CTR 161-167 DES VOEUX RD</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-red-300"></i>
+                            <a href="mailto:contact@hkdigigoodculture.com" class="hover:text-white transition">contact@hkdigigoodculture.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-red-300"></i>
+                            <a href="tel:69797884" class="hover:text-white transition text-lg font-bold">69797884</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-globe mr-3 text-red-300"></i>
+                            <span>hkdigigoodculture.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">零件查詢</h4>
+                    <form onsubmit="event.preventDefault(); alert('感謝您的查詢，零件專員會於30分鐘內與您聯絡！');" class="space-y-3">
+                        <input type="text" placeholder="您的稱呼" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-red-300 outline-none text-sm">
+                        <input type="text" placeholder="車架號 VIN" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-red-300 outline-none text-sm">
+                        <textarea placeholder="需要的零件及數量" rows="3" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-red-300 outline-none text-sm"></textarea>
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold py-3 rounded hover:opacity-90 transition">提交查詢</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 HONGKONG DIGIGOOD CULTURE LIMITED 版權所有</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-red-300">私隱政策</a>
+                    <a href="#" class="hover:text-red-300">零件保固條款</a>
+                    <a href="#" class="hover:text-red-300">條款及細則</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" id="backToTop" class="fixed bottom-8 right-8 bg-gradient-to-r from-brand-primary to-brand-accent text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 transition-all duration-300 z-40 hover:opacity-90">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-5');
+                backToTop.classList.remove('translate-y-20');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-5');
+                backToTop.classList.add('translate-y-20');
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.querySelector('.counter') && !entry.target.dataset.counted) {
+                        startCounters(entry.target);
+                        entry.target.dataset.counted = true;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function startCounters(section) {
+            const counters = section.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        document.querySelector('.fa-bars')?.parentElement?.addEventListener('click', () => {
+            alert('移動端菜單點擊 (此處可擴展側邊欄邏輯)');
+        });
+    </script>
+</body>
+</html>
